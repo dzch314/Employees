@@ -1,0 +1,6 @@
+.LoginPage {
+  min-height: calc(100dvh - var(--navbar-height) - 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

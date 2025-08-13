@@ -1,0 +1,24 @@
+name: Setup Node and Checkout
+
+inputs:
+  node-version:
+    description: Node.js version to install
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Restore node_modules from cache
+      id: cache-deps
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}

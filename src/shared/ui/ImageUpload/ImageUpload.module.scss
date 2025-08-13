@@ -1,0 +1,59 @@
+.ImageUploadWrapper {
+  display: inline-block;
+  flex: 1;
+}
+
+.label {
+  font: var(--font-xs);
+  color: var(--secondary-text-color);
+}
+
+.container {
+  height: 46px;
+  justify-content: space-between;
+  font: var(--font-m);
+  padding: 8px 2px;
+  display: flex;
+  width: 100%;
+  flex: 1;
+  min-width: 200px;
+  background: var(--secondary-bg-color);
+  align-items: center;
+  text-align: left;
+  gap: 8px;
+
+  svg {
+    color: var(--secondary-text-color);
+  }
+}
+
+.input {
+  display: none;
+}
+
+.inputButton {
+  flex: 1;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--secondary-text-color);
+}
+
+.clearIcon {
+  color: var(--secondary-text-color);
+  cursor: pointer;
+  display: none;
+
+  &:hover {
+    color: var(--primary-text-color);
+  }
+}
+
+.hideElement {
+  display: none;
+}
+
+.showElement {
+  display: block;
+}

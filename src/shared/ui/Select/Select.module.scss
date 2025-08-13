@@ -1,0 +1,101 @@
+.SelectWrapper {
+  display: inline-block;
+}
+
+.label {
+  font: var(--font-xs);
+  color: var(--secondary-text-color);
+}
+
+.select {
+  border: none;
+  outline: none;
+  color: var(--primary-text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--secondary-bg-color);
+  width: 100%;
+  min-width: 200px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.selectActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.clearIcon {
+  color: var(--secondary-text-color);
+  cursor: pointer;
+  display: none;
+
+  &:hover {
+    color: var(--primary-text-color);
+  }
+}
+
+.showClearIcon {
+  display: block;
+}
+
+.placeholder {
+  color: var(--secondary-text-color);
+}
+
+.size_m {
+  font: var(--font-m);
+  padding: 8px 2px;
+}
+
+.size_s {
+  font: var(--font-s);
+  padding: 2px 1px;
+}
+
+.optionsList {
+  list-style: none;
+  margin: 0;
+  position: absolute;
+  z-index: var(--select-z-index);
+  background: var(--secondary-bg-color);
+  min-width: 200px;
+  border: 1px solid var(--primary-color);
+  display: none;
+  padding: 4px 0;
+  border-radius: var(--border-radius);
+}
+
+.isOpen {
+  display: block;
+}
+
+.closeIcon {
+  color: var(--secondary-text-color);
+  transition: transform 0.2s ease-out;
+}
+
+.openIcon {
+  transform: rotate(-180deg);
+  transition: transform 0.2s ease-out;
+}
+
+.option {
+  color: var(--primary-text-color);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary-bg-color);
+  }
+}
+
+.optionItem {
+  padding: 8px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--secondary-text-color);
+}

@@ -1,0 +1,23 @@
+name: Build Storybook and run UI tests
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+
+jobs:
+  storybook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Common setup
+        uses: ./.github/actions/setup
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Build Storybook
+        run: npm run storybook:build

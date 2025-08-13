@@ -1,0 +1,23 @@
+name: Build production project
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Common setup
+        uses: ./.github/actions/setup
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Build production project
+        run: npm run build:prod

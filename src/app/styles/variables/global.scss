@@ -1,0 +1,43 @@
+:root {
+  // Colors
+  --primary-color: #38adf3;
+  --skeleton-color: #99cfef;
+  --inverted-primary-color: #fff;
+  --primary-bg-color: #f5f7fa;
+  --secondary-bg-color: #fff;
+  --primary-text-color: #333;
+  --secondary-text-color: #8d8c8c;
+  --green: #00c853;
+  --red: #d50000;
+  --yellow: #e0a639;
+  --violin: #8e24aa;
+  --hover-color: rgb(33 150 243 / 20%);
+  --overlay-color: rgb(0 0 0 / 60%);
+
+  // Fonts
+  --font-family-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 10px;
+  --font-line-xs: 14px;
+  --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
+  --font-size-s: 14px;
+  --font-line-s: 18px;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+  --font-size-m: 18px;
+  --font-line-m: 22px;
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+  --font-size-l: 24px;
+  --font-line-l: 28px;
+  --font-l: bold var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+
+  // Sizes
+  --navbar-height: 72px;
+  --border-radius: 4px;
+
+  // Indexes
+  --modal-z-index: 10;
+  --select-z-index: 11;
+
+  // Shadows
+  --primary-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+  --secondary-shadow: 0 4px 12px rgb(0 0 0 / 12%);
+}

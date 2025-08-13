@@ -1,0 +1,21 @@
+@use 'reset';
+@use 'variables/global';
+
+body {
+  font: var(--font-m);
+  color: var(--primary-text-color);
+}
+
+.app {
+  background: var(--primary-bg-color);
+  min-height: 100dvh;
+}
+
+.content-page {
+  display: flex;
+}
+
+.page-wrapper {
+  flex-grow: 1;
+  padding: 20px;
+}

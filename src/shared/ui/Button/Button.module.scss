@@ -1,0 +1,37 @@
+.Button {
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  outline: none;
+  color: var(--inverted-primary-color);
+  border: none;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.secondary {
+  color: var(--primary-color);
+  border: var(--primary-color) 1px solid;
+  background: none;
+}
+
+.common {
+  color: var(--primary-text-color);
+  border: none;
+  background: none;
+}
+
+.size_m {
+  font: var(--font-m);
+  padding: 4px 32px;
+}
+
+.size_l {
+  font: var(--font-l);
+  padding: 16px 32px;
+}
+
+.disabled {
+  opacity: 0.5;
+}

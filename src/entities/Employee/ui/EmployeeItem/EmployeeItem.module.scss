@@ -1,0 +1,23 @@
+.EmployeeItem {
+  display: flex;
+  border-radius: var(--border-radius);
+  box-shadow: var(--primary-shadow);
+  background: var(--secondary-bg-color);
+  padding: 24px;
+  gap: 24px;
+
+  &:hover {
+    box-shadow: var(--secondary-shadow);
+    transition: box-shadow 0.2s ease;
+  }
+}
+
+.skeletonInfo {
+  gap: 16px;
+  flex: 1;
+  align-self: end;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+}
+

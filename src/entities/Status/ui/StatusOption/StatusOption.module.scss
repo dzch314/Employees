@@ -1,0 +1,21 @@
+.StatusOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Working {
+  color: var(--green);
+}
+
+.OnVacation {
+  color: var(--red);
+}
+
+.LunchTime {
+  color: var(--yellow);
+}
+
+.BusinessTrip {
+  color: var(--violin);
+}

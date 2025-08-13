@@ -1,0 +1,19 @@
+.EmployeeList {
+  display: grid;
+  width: 100%;
+  max-width: 1326px;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media screen and (width <= 1346px) {
+  .EmployeeList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (width <= 894px) {
+  .EmployeeList {
+    grid-template-columns: 1fr;
+  }
+}

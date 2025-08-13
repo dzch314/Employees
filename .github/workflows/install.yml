@@ -1,0 +1,26 @@
+name: Install and cache dependencies
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.cache-deps.outputs.cache-hit }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Common setup
+        uses: ./.github/actions/setup
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Install dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: npm install

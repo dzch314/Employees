@@ -1,0 +1,26 @@
+name: Lint TS an SCSS files
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Common setup
+        uses: ./.github/actions/setup
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Lint TS
+        run: npm run lint:ts
+
+      - name: Lint SCSS
+        run: npm run lint:scss

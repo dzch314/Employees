@@ -1,0 +1,49 @@
+.InputWrapper {
+  display: inline-block;
+  flex: 1;
+}
+
+.label {
+  font: var(--font-xs);
+  color: var(--secondary-text-color);
+}
+
+.container {
+  font: var(--font-m);
+  padding: 8px 2px;
+  display: flex;
+  width: 100%;
+  flex: 1;
+  min-width: 200px;
+  background: var(--secondary-bg-color);
+  align-items: center;
+  text-align: left;
+  gap: 8px;
+
+  svg {
+    color: var(--secondary-text-color);
+  }
+}
+
+.input {
+  border: none;
+  outline: none;
+  width: 100%;
+  flex: 1;
+  color: var(--primary-text-color);
+  background: var(--secondary-bg-color);
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--secondary-text-color);
+    font: var(--font-m);
+  }
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--secondary-text-color);
+}

@@ -9,8 +9,6 @@ const options = {
   cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem')),
 };
 
-const PORT = 443; // 8000
-
 const app = jsonServer.create();
 
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
@@ -92,6 +90,8 @@ app.get('/users', (req, res) => {
 });
 
 app.use(router);
+
+const PORT = 8443; // 8000
 
 const httpsServer = https.createServer(options, app);
 httpsServer.listen(PORT, () => {

@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const https = require('https');
+const http = require('http');
 
 const options = {
   key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
@@ -91,13 +92,14 @@ app.get('/users', (req, res) => {
 
 app.use(router);
 
-const PORT = 8443; // 8000
-
+const PORT = 8443;
 const httpsServer = https.createServer(options, app);
 httpsServer.listen(PORT, () => {
   console.log(`Server is running on ${PORT} port`);
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Server is running on ${PORT} port`);
-// });
+const HTTP_PORT = 8000;
+const httpServer = http.createServer(app);
+httpServer.listen(HTTP_PORT, () => {
+  console.log(`Server is running on ${HTTP_PORT} port`);
+});

@@ -4,6 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "esModuleInterop": true,
+    "isolatedModules": true,
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "node",

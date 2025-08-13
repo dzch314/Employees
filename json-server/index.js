@@ -2,8 +2,14 @@ const jsonServer = require('json-server');
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
+const https = require('https');
 
-const PORT = 8000;
+const options = {
+  key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
+  cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem')),
+};
+
+const PORT = 443; // 8000
 
 const app = jsonServer.create();
 
@@ -49,7 +55,7 @@ app.post('/users/:userId', (req, res) => {
     employees.find(({ id }) => id === userId).status = status;
 
     fs.writeFileSync(path.resolve(__dirname, 'db.json'), JSON.stringify(db), 'UTF-8');
-    res.json(status);
+    return res.json(status);
   } catch (e) {
     console.error(e);
     return res.status(500).json({ message: e.message });
@@ -67,7 +73,7 @@ app.post('/users', (req, res) => {
     };
     employees.push(newEmployee);
     fs.writeFileSync(path.resolve(__dirname, 'db.json'), JSON.stringify(db), 'UTF-8');
-    res.json(newEmployee);
+    return res.json(newEmployee);
   } catch (e) {
     console.error(e);
     return res.status(500).json({ message: e.message });
@@ -78,7 +84,7 @@ app.get('/users', (req, res) => {
   try {
     const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
     const { users: employees = [] } = db;
-    res.json(employees);
+    return res.json(employees);
   } catch (e) {
     console.error(e);
     return res.status(500).json({ message: e.message });
@@ -87,6 +93,11 @@ app.get('/users', (req, res) => {
 
 app.use(router);
 
-app.listen(PORT, () => {
+const httpsServer = https.createServer(options, app);
+httpsServer.listen(PORT, () => {
   console.log(`Server is running on ${PORT} port`);
 });
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on ${PORT} port`);
+// });

@@ -42,7 +42,7 @@ describe('Test Input component', () => {
     fireEvent.change(input, { target: { value: 'abc' } });
     expect(input).toHaveValue('abc');
     act(() => {
-      jest.advanceTimersByTime(200);
+      jest.advanceTimersByTime(250);
     });
     expect(handleChange).toHaveBeenCalledWith('abc');
   });

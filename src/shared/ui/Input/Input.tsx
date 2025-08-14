@@ -42,12 +42,12 @@ export const Input = memo(({
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (onChange) {
+      if (onChange && inputValue !== value) {
         onChange(inputValue);
       }
-    }, 200);
+    }, 250);
     return () => clearTimeout(timeoutId);
-  }, [inputValue, onChange]);
+  }, [inputValue, onChange, value]);
 
   return (
     <div className={classNames(cls.InputWrapper, {}, [className])}>

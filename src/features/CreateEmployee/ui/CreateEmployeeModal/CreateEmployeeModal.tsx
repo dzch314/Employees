@@ -23,6 +23,10 @@ export const CreateEmployeeModal = memo(({
     }
   }, [onClose, onSuccess]);
 
+  const onCancel = useCallback(() => {
+    onClose();
+  }, [onClose]);
+
   return (
     <Modal
       className={classNames('', {}, [className])}
@@ -31,7 +35,7 @@ export const CreateEmployeeModal = memo(({
       lazy
     >
       <Suspense fallback={<Loader />}>
-        <CreateEmployeeFormAsync onSuccess={onCreationSuccess} />
+        <CreateEmployeeFormAsync onSuccess={onCreationSuccess} onCancel={onCancel} />
       </Suspense>
     </Modal>
   );

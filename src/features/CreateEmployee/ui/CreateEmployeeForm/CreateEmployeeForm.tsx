@@ -15,9 +15,10 @@ import cls from './CreateEmployeeForm.module.scss';
 export interface CreateEmployeeProps {
   className?: string;
   onSuccess: () => void;
+  onCancel(): void;
 }
 
-const CreateEmployeeForm = memo(({ className, onSuccess }: CreateEmployeeProps) => {
+const CreateEmployeeForm = memo(({ className, onSuccess, onCancel }: CreateEmployeeProps) => {
   const [name, setName] = useState('');
   const [status, setStatus] = useState<Status>();
   const [img, setImage] = useState('');
@@ -35,6 +36,10 @@ const CreateEmployeeForm = memo(({ className, onSuccess }: CreateEmployeeProps) 
       createEmployee({ name, status, img });
     }
   }, [createEmployee, name, status, img]);
+
+  const onCancelClick = useCallback(() => {
+    onCancel();
+  }, [onCancel]);
 
   const onChangeName = useCallback((value?: string) => setName(value || ''), [setName]);
   const onChangeStatus = useCallback(setStatus, [setStatus]);
@@ -79,7 +84,7 @@ const CreateEmployeeForm = memo(({ className, onSuccess }: CreateEmployeeProps) 
         </Button>
         <Button
           theme={ButtonTheme.COMMON}
-          onClick={onSuccess}
+          onClick={onCancelClick}
         >
           Cancel
         </Button>

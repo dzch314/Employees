@@ -62,12 +62,12 @@ export const Select = memo(<T extends string>(props: SelectProps<T>) => {
   }, [isOpen, onClose]);
 
   const onOptionClick = useCallback((option: SelectOption<T>) => {
-    if (onChange) {
+    if (onChange && option.value !== value) {
       onChange(option.value);
     }
     setSelectedOption(option);
     onClose();
-  }, [onChange, onClose]);
+  }, [onChange, onClose, value]);
 
   const onClearClick = useCallback((e: MouseEvent) => {
     e.stopPropagation();

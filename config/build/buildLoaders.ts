@@ -10,7 +10,7 @@ import type { BuildOptions } from './types/config';
 export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => [
   buildFileLoader(),
   buildSvgLoader(),
-  buildBabelLoader(),
+  buildBabelLoader(isDev),
   buildTsLoader(),
   buildCssLoader(isDev),
 ];

@@ -1,13 +1,8 @@
 {
   "presets": [
-    ["@babel/preset-env", { "targets": { "browsers": ["last 2 versions"] } }],
+    ["@babel/preset-env", { "targets": { "browsers": [ "last 2 versions" ] } }],
     "@babel/preset-typescript",
-    [
-      "@babel/preset-react",
-      {
-        "runtime": "automatic"
-      }
-    ]
+    ["@babel/preset-react", { "runtime": "automatic" } ]
   ],
   "plugins": []
 }

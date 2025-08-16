@@ -13,10 +13,12 @@ const config: StorybookConfig = {
     options: {},
   },
   webpackFinal: async (config) => {
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      '@/*': path.resolve(__dirname, '..', '..', 'src/*'),
-    };
+    if (config.resolve) {
+      config.resolve.alias = {
+        ...(config.resolve.alias || {}),
+        '@/*': path.resolve(__dirname, '..', '..', 'src/*'),
+      };
+    }
     return config;
   },
 };

@@ -26,16 +26,31 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
 
   const [authByUsername, { isLoading, error, data: token }] = useAuthByUsername();
 
-  const onLoginClick = useCallback(() => {
-    authByUsername({ username, password });
-  }, [authByUsername, password, username]);
-
   useEffect(() => {
     if (token && !error) {
       localStorage.setItem(USER_LOCALSTORAGE_TOKEN, token);
       dispatch(userActions.setAuthData(token));
     }
   }, [dispatch, error, token]);
+
+  const onLoginClick = useCallback(() => {
+    if (username && password) {
+      authByUsername({ username, password });
+    }
+  }, [authByUsername, password, username]);
+
+  const onEnterClick = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      onLoginClick();
+    }
+  }, [onLoginClick]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', onEnterClick);
+    return () => {
+      window.removeEventListener('keydown', onEnterClick);
+    };
+  }, [onEnterClick]);
 
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
@@ -59,7 +74,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
         theme={ButtonTheme.PRIMARY}
         className={cls.loginBtn}
         onClick={onLoginClick}
-        isDisabled={isLoading}
+        isDisabled={isLoading || !username || !password}
       >
         Log In
       </Button>

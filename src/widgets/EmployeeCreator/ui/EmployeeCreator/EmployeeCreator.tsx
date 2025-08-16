@@ -5,6 +5,8 @@ import AddIcon from '@/shared/assets/icons/add.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonSize } from '@/shared/ui/Button/Button';
 
+import cls from './EmployeeCreator.module.scss';
+
 interface EmployeeCreatorProps {
   className?: string;
   onSuccess?(): void;
@@ -23,7 +25,7 @@ export const EmployeeCreator = memo(({ className, onSuccess }: EmployeeCreatorPr
 
   return (
     <>
-      <Button onClick={onShowModal} className={classNames('', {}, [className])} size={ButtonSize.L}>
+      <Button onClick={onShowModal} className={classNames(cls.EmployeeCreator, {}, [className])} size={ButtonSize.L}>
         Create
         <AddIcon />
       </Button>

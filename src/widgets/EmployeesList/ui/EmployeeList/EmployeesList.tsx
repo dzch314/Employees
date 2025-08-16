@@ -70,8 +70,9 @@ export const EmployeesList = memo(({ className, trigger }: EmployeeListProps) =>
                   status={employee.status}
                   employeeId={employee.id || ''}
                   onSuccess={refreshEmployees}
+                  className={cls.employeeStatus}
                 />
-                    )}
+              )}
             />
           ))}
         {isLoading && getSkeleton()}

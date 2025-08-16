@@ -8,3 +8,19 @@
   margin-top: 60px;
   justify-content: center;
 }
+
+@media screen and (width < 1383px) {
+  .content {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (width <= 680px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .content {
+    margin-top: 8px;
+  }
+}

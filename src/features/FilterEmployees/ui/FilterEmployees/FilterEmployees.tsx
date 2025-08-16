@@ -47,13 +47,20 @@ export const FilterEmployees = memo(({ className }: FilterEmployeesProps) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={classNames(cls.EmployeesFilter, {}, [className])}>
-        <Input placeholder="Type to search" Icon={<SearchIcon />} value={searchText} onChange={onChangeSearchText} />
+        <Input
+          placeholder="Type to search"
+          Icon={<SearchIcon />}
+          value={searchText}
+          onChange={onChangeSearchText}
+          className={cls.searchText}
+        />
         <VerticalDivider />
         <StatusSelect
           isClearable
           placeholder="Filter by status"
           value={filter}
           onChange={onChangeFilter}
+          className={cls.statusFilter}
         />
       </div>
     </DynamicModuleLoader>

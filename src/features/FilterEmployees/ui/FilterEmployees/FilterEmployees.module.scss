@@ -7,3 +7,31 @@
   gap: 16px;
   align-items: center;
 }
+
+@media screen and (width <= 680px) {
+  .EmployeesFilter {
+    flex-direction: column;
+  }
+
+  .searchText {
+    width: 100%;
+
+    div {
+      flex-direction: row-reverse;
+      min-width: unset;
+    }
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .statusFilter {
+    width: 100%;
+
+    button {
+      min-width: unset;
+    }
+  }
+}
+

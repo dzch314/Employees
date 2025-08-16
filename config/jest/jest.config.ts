@@ -20,6 +20,16 @@ export default {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   modulePaths: ['<rootDir>src'],
+  reporters: [
+    'default',
+    [
+      '<rootDir>/node_modules/jest-html-reporter',
+      {
+        outputPath: '<rootDir>/reports/tests/unit/report.html',
+        pageTitle: 'Unit tests report',
+      },
+    ],
+  ],
   rootDir: '../../',
   setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
   testEnvironment: 'jsdom',

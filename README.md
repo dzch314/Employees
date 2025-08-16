@@ -50,7 +50,7 @@ This project follows the [Feature-Sliced Design (FSD)](https://feature-sliced.de
 - [LoginPage](/src/pages/LoginPage)
 - [MainPage](/src/pages/MainPage)
 - [NotFoundPage](/src/pages/NotFoundPage)
-- 
+
 ## Widgets
 - [Navbar](/src/widgets/Navbar)
 - [EmployeeCreator](/src/widgets/EmployeeCreator)

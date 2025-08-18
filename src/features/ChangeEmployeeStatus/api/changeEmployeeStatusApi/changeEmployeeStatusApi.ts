@@ -1,5 +1,5 @@
+import type { Status } from '@/entities/Status';
 import { rtkApi } from '@/shared/api/rtkApi';
-import { Status } from '@/entities/Status';
 
 interface ChangeEmployeeStatusArg {
   employeeId: string;

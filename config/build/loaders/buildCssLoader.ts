@@ -15,6 +15,11 @@ export const buildCssLoader = (isDev = true) => ({
         },
       },
     },
-    'sass-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        api: 'modern',
+      },
+    },
   ],
 });

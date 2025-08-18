@@ -35,7 +35,7 @@ describe('Test Modal component', () => {
     expect(onCloseMock).toHaveBeenCalledTimes(1);
   });
 
-  test('doesnt call onCLose while clicking inside content', () => {
+  test('doesnt call onClose while clicking inside content', () => {
     render(
       <Modal isOpen onClose={onCloseMock}>
         <div data-testid="content">content</div>

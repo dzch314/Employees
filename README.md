@@ -17,7 +17,7 @@ Install dependencies
 
 `npm install`
 
-Run both frontend and backend (JSON Server):
+Run both frontend and backend (json-server):
 
 `npm run start` 
 

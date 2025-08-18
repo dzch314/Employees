@@ -1,4 +1,4 @@
-name: Build Storybook and run UI tests
+name: Build Storybook
 
 on:
   workflow_call:

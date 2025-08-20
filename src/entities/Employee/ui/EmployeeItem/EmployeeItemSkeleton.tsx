@@ -1,10 +1,8 @@
-import { memo } from 'react';
-
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 import cls from './EmployeeItem.module.scss';
 
-export const EmployeeItemSkeleton = memo(() => (
+export const EmployeeItemSkeleton = () => (
   <div className={cls.EmployeeItem}>
     <div>
       <Skeleton width="150px" height="150px" borderRadius="50%" />
@@ -14,4 +12,4 @@ export const EmployeeItemSkeleton = memo(() => (
       <Skeleton width="200px" height="25px" />
     </div>
   </div>
-));
+);

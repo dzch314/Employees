@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { EmployeeCreator } from '@/widgets/EmployeeCreator';
 import { EmployeesList } from '@/widgets/EmployeesList';
@@ -11,11 +11,11 @@ export interface MainPageProps {
   className?: string;
 }
 
-const MainPage = memo(({ className }: MainPageProps) => {
+const MainPage = ({ className }: MainPageProps) => {
   const [reloadList, setReloadList] = useState(Date.now());
-  const onSuccess = useCallback(() => {
+  const onSuccess = () => {
     setReloadList(Date.now());
-  }, []);
+  };
   return (
     <div className={classNames('', {}, [className])}>
       <div className={cls.actions}>
@@ -27,6 +27,6 @@ const MainPage = memo(({ className }: MainPageProps) => {
       </div>
     </div>
   );
-});
+};
 
 export default MainPage;

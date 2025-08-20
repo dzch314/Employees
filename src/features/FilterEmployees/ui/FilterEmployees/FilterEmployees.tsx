@@ -1,4 +1,3 @@
-import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
 import { StatusSelect, type Status } from '@/entities/Status';
@@ -29,20 +28,14 @@ const reducers: ReducersList = {
   filterEmployees: filterEmployeesReducer,
 };
 
-export const FilterEmployees = memo(({ className }: FilterEmployeesProps) => {
+export const FilterEmployees = ({ className }: FilterEmployeesProps) => {
   const dispatch = useAppDispatch();
   const searchText = useSelector(getFilterEmployeesSearchText);
   const filter = useSelector(getFilterEmployeesStatus);
 
-  const onChangeSearchText = useCallback(
-    (value?: string) => dispatch(filterEmployeesActions.setSearchText(value || '')),
-    [dispatch],
-  );
+  const onChangeSearchText = (value?: string) => dispatch(filterEmployeesActions.setSearchText(value || ''));
 
-  const onChangeFilter = useCallback(
-    (value: Status) => dispatch(filterEmployeesActions.setFilter(value)),
-    [dispatch],
-  );
+  const onChangeFilter = (value: Status) => dispatch(filterEmployeesActions.setFilter(value));
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -65,4 +58,4 @@ export const FilterEmployees = memo(({ className }: FilterEmployeesProps) => {
       </div>
     </DynamicModuleLoader>
   );
-});
+};

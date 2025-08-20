@@ -1,4 +1,4 @@
-import { memo, useMemo, type CSSProperties } from 'react';
+import { type CSSProperties } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
@@ -11,14 +11,12 @@ interface SkeletonProps {
   borderRadius?: string;
 }
 
-export const Skeleton = memo(({
+export const Skeleton = ({
   className, height, width, borderRadius,
 }: SkeletonProps) => {
-  const style: CSSProperties = useMemo(() => ({
-    width, height, borderRadius,
-  }), [borderRadius, height, width]);
+  const style: CSSProperties = { width, height, borderRadius };
 
   return (
     <div data-testid="skeleton" className={classNames(cls.Skeleton, {}, [className])} style={style} />
   );
-});
+};

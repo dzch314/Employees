@@ -1,4 +1,3 @@
-import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
 import { getUserTokenSelector, userActions } from '@/entities/User';
@@ -13,14 +12,14 @@ interface NavbarProps {
   className?: string;
 }
 
-export const Navbar = memo(({ className }: NavbarProps) => {
+export const Navbar = ({ className }: NavbarProps) => {
   const dispatch = useAppDispatch();
 
   const authData = useSelector(getUserTokenSelector);
 
-  const onLogout = useCallback(() => {
+  const onLogout = () => {
     dispatch(userActions.logout());
-  }, [dispatch]);
+  };
 
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
@@ -36,4 +35,4 @@ export const Navbar = memo(({ className }: NavbarProps) => {
       )}
     </header>
   );
-});
+};

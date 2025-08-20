@@ -1,4 +1,4 @@
-import { memo, Suspense, useCallback } from 'react';
+import { Suspense } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Loader } from '@/shared/ui/Loader/Loader';
@@ -13,19 +13,15 @@ interface LoginModalProps {
   onSuccess?(): void;
 }
 
-export const CreateEmployeeModal = memo(({
+export const CreateEmployeeModal = ({
   className, isOpen, onClose, onSuccess,
 }: LoginModalProps) => {
-  const onCreationSuccess = useCallback(() => {
+  const onCreationSuccess = () => {
     onClose();
     if (onSuccess) {
       onSuccess();
     }
-  }, [onClose, onSuccess]);
-
-  const onCancel = useCallback(() => {
-    onClose();
-  }, [onClose]);
+  };
 
   return (
     <Modal
@@ -35,8 +31,8 @@ export const CreateEmployeeModal = memo(({
       lazy
     >
       <Suspense fallback={<Loader />}>
-        <CreateEmployeeFormAsync onSuccess={onCreationSuccess} onCancel={onCancel} />
+        <CreateEmployeeFormAsync onSuccess={onCreationSuccess} onCancel={onClose} />
       </Suspense>
     </Modal>
   );
-});
+};

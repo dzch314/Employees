@@ -1,5 +1,3 @@
-import { memo } from 'react';
-
 import { LoginForm } from '@/features/AuthByUsername';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
@@ -9,10 +7,10 @@ export interface LoginPageProps {
   className?: string;
 }
 
-const LoginPage = memo(({ className }: LoginPageProps) => (
+const LoginPage = ({ className }: LoginPageProps) => (
   <div className={classNames(cls.LoginPage, {}, [className])}>
     <LoginForm />
   </div>
-));
+);
 
 export default LoginPage;

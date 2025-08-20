@@ -1,5 +1,5 @@
 import {
-  memo, useLayoutEffect, useState,
+  memo, useEffect, useState,
 } from 'react';
 
 import ProfileImage from '@/shared/assets/icons/profile.png';
@@ -19,11 +19,18 @@ export const EmployeeImage = memo(({
 }: EmployeeImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    let isMounted = true;
     const image = new Image();
     image.src = img || ProfileImage;
     image.onload = () => {
-      setIsLoading(false);
+      if (isMounted) {
+        setIsLoading(false);
+      }
+    };
+
+    return () => {
+      isMounted = false;
     };
   }, [img]);
 

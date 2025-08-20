@@ -11,7 +11,7 @@ interface StatusSelectProps extends Omit<SelectProps<Status>, 'options'>{}
 export const StatusSelect = memo((props: StatusSelectProps) => (
   <Select
     {...props}
-    className={classNames('', {}, [props.className])}
+    className={classNames('', {}, [props?.className])}
     options={statusOptions}
   />
 ));

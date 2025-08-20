@@ -1,6 +1,4 @@
-import {
-  memo, useCallback, useEffect, useState,
-} from 'react';
+import { useEffect, useState } from 'react';
 
 import { StatusSelect, type Status } from '@/entities/Status';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -18,7 +16,7 @@ export interface CreateEmployeeProps {
   onCancel(): void;
 }
 
-const CreateEmployeeForm = memo(({ className, onSuccess, onCancel }: CreateEmployeeProps) => {
+const CreateEmployeeForm = ({ className, onSuccess, onCancel }: CreateEmployeeProps) => {
   const [name, setName] = useState('');
   const [status, setStatus] = useState<Status>();
   const [img, setImage] = useState('');
@@ -31,19 +29,14 @@ const CreateEmployeeForm = memo(({ className, onSuccess, onCancel }: CreateEmplo
     }
   }, [onSuccess, reqStatus]);
 
-  const onCreateClick = useCallback(() => {
+  const onCreateClick = () => {
     if (name && status) {
       createEmployee({ name, status, img });
     }
-  }, [createEmployee, name, status, img]);
+  };
 
-  const onCancelClick = useCallback(() => {
-    onCancel();
-  }, [onCancel]);
-
-  const onChangeName = useCallback((value?: string) => setName(value || ''), [setName]);
-  const onChangeStatus = useCallback(setStatus, [setStatus]);
-  const onChangeImg = useCallback((value?: string) => setImage(value || ''), [setImage]);
+  const onChangeName = (value?: string) => setName(value || '');
+  const onChangeImg = (value?: string) => setImage(value || '');
 
   return (
     <div className={classNames(cls.CreateUserForm, {}, [className])}>
@@ -64,7 +57,7 @@ const CreateEmployeeForm = memo(({ className, onSuccess, onCancel }: CreateEmplo
         placeholder="Select user status"
         label="Status*:"
         isUnderlined
-        onChange={onChangeStatus}
+        onChange={setStatus}
         value={status}
       />
       <ImageUpload
@@ -84,13 +77,13 @@ const CreateEmployeeForm = memo(({ className, onSuccess, onCancel }: CreateEmplo
         </Button>
         <Button
           theme={ButtonTheme.COMMON}
-          onClick={onCancelClick}
+          onClick={onCancel}
         >
           Cancel
         </Button>
       </div>
     </div>
   );
-});
+};
 
 export default CreateEmployeeForm;

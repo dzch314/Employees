@@ -48,10 +48,10 @@ export const Select = memo(<T extends string>(props: SelectProps<T>) => {
   }, [options, value]);
 
   const [isOpen, setIsOpen] = useState(false);
-  const onOpen = useCallback((e: MouseEvent) => {
+  const onOpen = (e: MouseEvent) => {
     e.stopPropagation();
     setIsOpen((isOpen) => !isOpen);
-  }, []);
+  };
   const onClose = useCallback(() => setIsOpen(false), []);
 
   useEffect(() => {
@@ -61,21 +61,21 @@ export const Select = memo(<T extends string>(props: SelectProps<T>) => {
     return () => document.removeEventListener('click', onClose);
   }, [isOpen, onClose]);
 
-  const onOptionClick = useCallback((option: SelectOption<T>) => {
+  const onOptionClick = (option: SelectOption<T>) => {
     if (onChange && option.value !== value) {
       onChange(option.value);
     }
     setSelectedOption(option);
     onClose();
-  }, [onChange, onClose, value]);
+  };
 
-  const onClearClick = useCallback((e: MouseEvent) => {
+  const onClearClick = (e: MouseEvent) => {
     e.stopPropagation();
     if (onChange) {
       onChange(undefined);
     }
     setSelectedOption(undefined);
-  }, [onChange]);
+  };
 
   return (
     <div className={classNames(cls.SelectWrapper, {}, [className])}>

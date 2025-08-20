@@ -1,4 +1,4 @@
-import { useCallback, memo, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { StatusSelect, type Status } from '@/entities/Status';
 import { SelectSize } from '@/shared/ui/Select';
@@ -13,7 +13,7 @@ interface EmployeeStatusProps {
   onSuccess?: () => void;
 }
 
-export const EmployeeStatus = memo(({
+export const EmployeeStatus = ({
   className, status, employeeId, onSuccess,
 }: EmployeeStatusProps) => {
   const [changeEmployeeStatus, { status: requestStatus }] = useChangeEmployeeStatus();
@@ -24,11 +24,11 @@ export const EmployeeStatus = memo(({
     }
   }, [requestStatus, onSuccess]);
 
-  const onChangeStatus = useCallback((newStatus: Status) => {
+  const onChangeStatus = (newStatus: Status) => {
     if (status !== newStatus) {
       changeEmployeeStatus({ employeeId, status: newStatus });
     }
-  }, [changeEmployeeStatus, employeeId, status]);
+  };
 
   return (
     <StatusSelect
@@ -39,4 +39,4 @@ export const EmployeeStatus = memo(({
       isUnderlined
     />
   );
-});
+};

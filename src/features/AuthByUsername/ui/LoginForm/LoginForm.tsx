@@ -1,5 +1,5 @@
 import {
-  memo, useCallback, useEffect, useState,
+  useCallback, useEffect, useState,
 } from 'react';
 
 import { useAuthByUsername } from '@/features/AuthByUsername/api/authByUsernameApi';
@@ -17,12 +17,12 @@ interface LoginFormProps {
   className?: string;
 }
 
-export const LoginForm = memo(({ className }: LoginFormProps) => {
+export const LoginForm = ({ className }: LoginFormProps) => {
   const dispatch = useAppDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const onChangeUsername = useCallback((value?: string) => setUsername(value || ''), [setUsername]);
-  const onChangePassword = useCallback((value?: string) => setPassword(value || ''), [setPassword]);
+  const onChangeUsername = (value?: string) => setUsername(value || '');
+  const onChangePassword = (value?: string) => setPassword(value || '');
 
   const [authByUsername, { isLoading, error, data: token }] = useAuthByUsername();
 
@@ -39,18 +39,17 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     }
   }, [authByUsername, password, username]);
 
-  const onEnterClick = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      onLoginClick();
-    }
-  }, [onLoginClick]);
-
   useEffect(() => {
+    const onEnterClick = (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        onLoginClick();
+      }
+    };
     window.addEventListener('keydown', onEnterClick);
     return () => {
       window.removeEventListener('keydown', onEnterClick);
     };
-  }, [onEnterClick]);
+  }, [onLoginClick]);
 
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
@@ -80,4 +79,4 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
       </Button>
     </div>
   );
-});
+};

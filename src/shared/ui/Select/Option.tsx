@@ -1,4 +1,4 @@
-import { memo, useCallback, type ReactNode } from 'react';
+import { memo, type ReactNode } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
@@ -20,11 +20,12 @@ export const Option = memo(<T extends string>({
   onChange,
   className,
 }: OptionProps<T>) => {
-  const onClick = useCallback(() => {
+  const onClick = () => {
     if (onChange) {
       onChange(option);
     }
-  }, [onChange, option]);
+  };
+
   return (
     <li className={classNames(cls.option, {}, [className])}>
       <div className={cls.optionItem} onClick={onClick}>

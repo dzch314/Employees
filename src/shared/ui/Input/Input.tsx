@@ -1,5 +1,5 @@
 import {
-  memo, useCallback, useState, useEffect,
+  memo, useState, useEffect,
   type InputHTMLAttributes, type ChangeEvent, type ReactNode,
 } from 'react';
 
@@ -34,11 +34,11 @@ export const Input = memo(({
     inputValue, setInputValue,
   ] = useState(value ?? '');
 
-  const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (!regex || regex.test(e.target.value)) {
       setInputValue(e.target.value);
     }
-  }, [regex]);
+  };
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {

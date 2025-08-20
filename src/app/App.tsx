@@ -1,4 +1,4 @@
-import { memo, Suspense, useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 
 import { AppRouter } from '@/app/providers/router';
 import { Navbar } from '@/widgets/Navbar';
@@ -7,7 +7,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Loader } from '@/shared/ui/Loader';
 
-export const App = memo(() => {
+export const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -24,4 +24,4 @@ export const App = memo(() => {
       </Suspense>
     </div>
   );
-});
+};

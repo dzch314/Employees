@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { EmployeeStatus } from '@/features/ChangeEmployeeStatus';
@@ -30,19 +30,19 @@ const getSkeleton = () => new Array(6)
     <EmployeeItemSkeleton key={index} />
   ));
 
-export const EmployeesList = memo(({ className, trigger }: EmployeeListProps) => {
+export const EmployeesList = ({ className, trigger }: EmployeeListProps) => {
   const dispatch = useAppDispatch();
   const [getEmployees, { data: employees, isLoading, error }] = useLazyGetEmployees();
   const status = useSelector(getFilterEmployeesStatus);
   const searchText = useSelector(getFilterEmployeesSearchText);
 
-  const refreshEmployees = useCallback(() => {
+  const refreshEmployees = () => {
     getEmployees(null);
-  }, [getEmployees]);
+  };
 
   useEffect(() => {
-    refreshEmployees();
-  }, [refreshEmployees, trigger]);
+    getEmployees(null);
+  }, [getEmployees, trigger]);
 
   useEffect(() => {
     if (employees) {
@@ -80,4 +80,4 @@ export const EmployeesList = memo(({ className, trigger }: EmployeeListProps) =>
       </div>
     </DynamicModuleLoader>
   );
-});
+};

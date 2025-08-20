@@ -1,4 +1,4 @@
-import { memo, useState, useCallback } from 'react';
+import { useState } from 'react';
 
 import { CreateEmployeeModal } from '@/features/CreateEmployee';
 import AddIcon from '@/shared/assets/icons/add.svg';
@@ -12,16 +12,16 @@ interface EmployeeCreatorProps {
   onSuccess?(): void;
 }
 
-export const EmployeeCreator = memo(({ className, onSuccess }: EmployeeCreatorProps) => {
+export const EmployeeCreator = ({ className, onSuccess }: EmployeeCreatorProps) => {
   const [isCreateUserModalOpen, setIsCreateUserModalOpen] = useState(false);
 
-  const onCloseModal = useCallback(() => {
+  const onCloseModal = () => {
     setIsCreateUserModalOpen(false);
-  }, []);
+  };
 
-  const onShowModal = useCallback(() => {
+  const onShowModal = () => {
     setIsCreateUserModalOpen(true);
-  }, []);
+  };
 
   return (
     <>
@@ -38,4 +38,4 @@ export const EmployeeCreator = memo(({ className, onSuccess }: EmployeeCreatorPr
       )}
     </>
   );
-});
+};

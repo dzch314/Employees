@@ -1,5 +1,3 @@
-import { memo } from 'react';
-
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
 
@@ -9,7 +7,7 @@ interface PageErrorProps {
   className?: string;
 }
 
-export const PageError = memo(({ className }: PageErrorProps) => {
+export const PageError = ({ className }: PageErrorProps) => {
   const reloadPage = () => {
     // eslint-disable-next-line no-restricted-globals
     location.reload();
@@ -23,4 +21,4 @@ export const PageError = memo(({ className }: PageErrorProps) => {
       </Button>
     </div>
   );
-});
+};

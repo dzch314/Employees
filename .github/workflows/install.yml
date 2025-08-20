@@ -10,6 +10,8 @@ on:
 jobs:
   install:
     runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.cache-deps.outputs.cache-hit }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,4 +22,5 @@ jobs:
           node-version: ${{ inputs.node-version }}
 
       - name: Install dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: npm install

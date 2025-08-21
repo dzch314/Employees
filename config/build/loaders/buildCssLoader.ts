@@ -8,6 +8,8 @@ export const buildCssLoader = (isDev = true) => ({
       loader: 'css-loader',
       options: {
         modules: {
+          namedExport: false,
+          exportLocalsConvention: 'as-is',
           auto: /\.module.s[ca]ss$/,
           localIdentName: isDev
             ? '[path][name]__[local]--[hash:base64:5]'

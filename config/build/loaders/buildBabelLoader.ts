@@ -4,6 +4,8 @@ export const buildBabelLoader = (isDev = true) => ({
   use: {
     loader: 'babel-loader',
     options: {
+      cacheDirectory: true,
+      cacheCompression: false,
       presets: ['@babel/preset-env'],
       plugins: [isDev && require.resolve('react-refresh/babel')].filter(Boolean),
     },

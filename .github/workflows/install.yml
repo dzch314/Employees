@@ -23,4 +23,4 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: npm install --force
+        run: npm install

@@ -15,7 +15,7 @@ password: 1234
 ## Running the Project Locally
 ### Requirements
 - Node.JS `v22.18.0`
-- npm `v8.5.1`
+- npm `v10.9.3`
 
 Install dependencies
 

@@ -23,14 +23,14 @@ export const convertImageToWebPBase64 = (image?: File, maxTargetSize = 320) =>
         }
         ctx.drawImage(img, sx, sy, side, side, 0, 0, targetSize, targetSize);
         try {
-          const webpDataUrl = canvas.toDataURL('image/webp', 0.8); // 80% качество
+          const webpDataUrl = canvas.toDataURL('image/webp', 0.8);
           resolve(webpDataUrl);
         } catch (error) {
           reject(error);
         }
       };
       img.onerror = (error) => reject(error);
-      img.src = event?.target?.result as string; // Загружаем оригинальное изображение
+      img.src = event?.target?.result as string;
     };
     reader.onerror = (error) => reject(error);
     if (image) {

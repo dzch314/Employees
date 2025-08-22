@@ -84,7 +84,6 @@ describe('Test convertImageToWebPBase64 function', () => {
     const result = await promise;
 
     expect(result).toBe('data:image/webp;base64,webpdata');
-    // side = 400, sx = (800-400)/2 = 200
     expect(mockCtx.drawImage).toHaveBeenCalledWith(mockImage, 200, 0, 400, 400, 0, 0, 320, 320);
   });
 

@@ -28,7 +28,7 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
-      "prettier --list-different",
+      "npx prettier --write --list-different",
       "eslint",
       "jest --config ./config/jest/jest.config.ts --bail --findRelatedTests"
     ],

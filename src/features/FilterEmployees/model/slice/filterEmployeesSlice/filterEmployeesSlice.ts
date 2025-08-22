@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import type { Status } from '@/entities/Status';
 
@@ -19,4 +19,7 @@ export const filterEmployeesSlice = createSlice({
   },
 });
 
-export const { actions: filterEmployeesActions, reducer: filterEmployeesReducer } = filterEmployeesSlice;
+export const {
+  actions: filterEmployeesActions,
+  reducer: filterEmployeesReducer,
+} = filterEmployeesSlice;

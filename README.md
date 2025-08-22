@@ -7,6 +7,10 @@ You can try it using the following credentials:
 login: admin
 password: 1234
 ```
+```
+login: user
+password: 1234
+```
 ----
 ## Running the Project Locally
 ### Requirements

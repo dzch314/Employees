@@ -18,4 +18,5 @@ const changeEmployeeStatusApi = rtkApi.injectEndpoints({
   }),
 });
 
-export const useChangeEmployeeStatus = changeEmployeeStatusApi.useChangeEmployeeStatusMutation;
+export const useChangeEmployeeStatus =
+  changeEmployeeStatusApi.useChangeEmployeeStatusMutation;

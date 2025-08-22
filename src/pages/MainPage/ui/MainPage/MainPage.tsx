@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 import { EmployeeCreator } from '@/widgets/EmployeeCreator';
 import { EmployeesList } from '@/widgets/EmployeesList';

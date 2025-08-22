@@ -1,3 +1,4 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 
-export const getUserTokenSelector = (state: StateSchema) => state?.user?.token ?? '';
+export const getUserTokenSelector = (state: StateSchema) =>
+  state?.user?.token ?? '';

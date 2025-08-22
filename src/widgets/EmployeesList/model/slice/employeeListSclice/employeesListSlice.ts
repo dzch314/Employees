@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import type { EmployeeWithStatus } from '@/features/CreateEmployee';
 
@@ -18,4 +18,5 @@ export const employeesListSlice = createSlice({
   },
 });
 
-export const { actions: employeesListActions, reducer: employeesListReducer } = employeesListSlice;
+export const { actions: employeesListActions, reducer: employeesListReducer } =
+  employeesListSlice;

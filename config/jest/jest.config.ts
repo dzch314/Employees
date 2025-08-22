@@ -6,14 +6,7 @@ export default {
     __API__: '',
   },
   moduleDirectories: ['node_modules'],
-  moduleFileExtensions: [
-    'js',
-    'jsx',
-    'ts',
-    'tsx',
-    'json',
-    'node',
-  ],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
     '\\.svg': '<rootDir>config/jest/jestEmptyComponent.tsx',

@@ -16,14 +16,20 @@ describe('Test convertImageToWebPBase64 function', () => {
         } as unknown as ProgressEvent<FileReader>);
       }),
     };
-    jest.spyOn(window, 'FileReader').mockImplementation(() => mockFileReader as FileReader);
+    jest
+      .spyOn(window, 'FileReader')
+      .mockImplementation(() => mockFileReader as FileReader);
 
     mockImage = {} as unknown as HTMLImageElement;
-    jest.spyOn(window, 'Image').mockImplementation(() => mockImage as HTMLImageElement);
+    jest
+      .spyOn(window, 'Image')
+      .mockImplementation(() => mockImage as HTMLImageElement);
 
     mockCanvas = document.createElement('canvas');
     mockCtx = { drawImage: jest.fn() };
-    jest.spyOn(mockCanvas, 'getContext').mockReturnValue(mockCtx as CanvasRenderingContext2D);
+    jest
+      .spyOn(mockCanvas, 'getContext')
+      .mockReturnValue(mockCtx as CanvasRenderingContext2D);
 
     jest.spyOn(document, 'createElement').mockImplementation((tag: string) => {
       if (tag === 'canvas') return mockCanvas;
@@ -39,7 +45,9 @@ describe('Test convertImageToWebPBase64 function', () => {
   it('converts PNG', async () => {
     mockImage.width = 100;
     mockImage.height = 100;
-    jest.spyOn(mockCanvas, 'toDataURL').mockReturnValue('data:image/webp;base64,webpdata');
+    jest
+      .spyOn(mockCanvas, 'toDataURL')
+      .mockReturnValue('data:image/webp;base64,webpdata');
 
     setTimeout(() => mockImage.onload?.(new Event('load')), 0);
 
@@ -64,11 +72,15 @@ describe('Test convertImageToWebPBase64 function', () => {
     const promise = convertImageToWebPBase64(file);
 
     jest.runAllTimers();
-    await expect(promise).rejects.toThrow('WebP conversion not supported or failed.');
+    await expect(promise).rejects.toThrow(
+      'WebP conversion not supported or failed.',
+    );
   });
 
   it('reject if FileReader error', async () => {
-    (mockFileReader.readAsDataURL as jest.Mock).mockImplementation(function (this: FileReader) {
+    (mockFileReader.readAsDataURL as jest.Mock).mockImplementation(function (
+      this: FileReader,
+    ) {
       this.onerror?.(new Event('error') as any);
     });
 

@@ -7,12 +7,8 @@ import { buildSvgLoader } from '../build/loaders/buildSvgLoader';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 
 const config: StorybookConfig = {
-  stories: [
-    '../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-  ],
-  addons: [
-    '@storybook/addon-webpack5-compiler-swc',
-  ],
+  stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  addons: ['@storybook/addon-webpack5-compiler-swc'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
@@ -38,10 +34,12 @@ const config: StorybookConfig = {
 
     config.module.rules.push(buildSvgLoader());
     config.module.rules.push(buildCssLoader());
-    config.plugins.push(new DefinePlugin({
-      __IS_DEV__: JSON.stringify(true),
-      __API__: JSON.stringify(''),
-    }));
+    config.plugins.push(
+      new DefinePlugin({
+        __IS_DEV__: JSON.stringify(true),
+        __API__: JSON.stringify(''),
+      }),
+    );
 
     return config;
   },

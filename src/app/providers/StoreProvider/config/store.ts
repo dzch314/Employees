@@ -1,4 +1,8 @@
-import { configureStore, type ReducersMapObject, type Reducer } from '@reduxjs/toolkit';
+import {
+  configureStore,
+  type ReducersMapObject,
+  type Reducer,
+} from '@reduxjs/toolkit';
 
 import { userReducer } from '@/entities/User';
 import { rtkApi } from '@/shared/api/rtkApi';
@@ -23,9 +27,10 @@ export const createReduxStore = (
     devTools: __IS_DEV__,
     preloadedState: initialState,
     // @ts-ignore
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-      thunk: { extraArgument: {} },
-    }).concat(rtkApi.middleware),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: { extraArgument: {} },
+      }).concat(rtkApi.middleware),
   });
 
   // @ts-ignore

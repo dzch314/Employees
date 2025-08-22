@@ -42,9 +42,9 @@ describe('Test convertImageToWebPBase64 function', () => {
     jest.useRealTimers();
   });
 
-  it('converts PNG', async () => {
-    mockImage.width = 100;
-    mockImage.height = 100;
+  it('converts square image without resize (<= 320)', async () => {
+    mockImage.width = 200;
+    mockImage.height = 200;
     jest
       .spyOn(mockCanvas, 'toDataURL')
       .mockReturnValue('data:image/webp;base64,webpdata');
@@ -58,13 +58,84 @@ describe('Test convertImageToWebPBase64 function', () => {
     const result = await promise;
 
     expect(result).toBe('data:image/webp;base64,webpdata');
-    expect(mockCtx.drawImage).toHaveBeenCalledWith(mockImage, 0, 0);
+    expect(mockCtx.drawImage).toHaveBeenCalledWith(
+      mockImage,
+      0,
+      0,
+      200,
+      200,
+      0,
+      0,
+      200,
+      200,
+    );
   });
 
-  it('reject', async () => {
+  it('resizes square image to 320x320 if bigger', async () => {
+    mockImage.width = 1000;
+    mockImage.height = 1000;
+    jest
+      .spyOn(mockCanvas, 'toDataURL')
+      .mockReturnValue('data:image/webp;base64,webpdata');
+
+    setTimeout(() => mockImage.onload?.(new Event('load')), 0);
+
+    const file = new File(['dummy'], 'big.png', { type: 'image/png' });
+    const promise = convertImageToWebPBase64(file);
+
+    jest.runAllTimers();
+    const result = await promise;
+
+    expect(result).toBe('data:image/webp;base64,webpdata');
+    expect(mockCtx.drawImage).toHaveBeenCalledWith(
+      mockImage,
+      0,
+      0,
+      1000,
+      1000,
+      0,
+      0,
+      320,
+      320,
+    );
+  });
+
+  it('crops horizontal image', async () => {
+    mockImage.width = 800;
+    mockImage.height = 400;
+    jest
+      .spyOn(mockCanvas, 'toDataURL')
+      .mockReturnValue('data:image/webp;base64,webpdata');
+
+    setTimeout(() => mockImage.onload?.(new Event('load')), 0);
+
+    const file = new File(['dummy'], 'wide.png', { type: 'image/png' });
+    const promise = convertImageToWebPBase64(file);
+
+    jest.runAllTimers();
+    const result = await promise;
+
+    expect(result).toBe('data:image/webp;base64,webpdata');
+    // side = 400, sx = (800-400)/2 = 200
+    expect(mockCtx.drawImage).toHaveBeenCalledWith(
+      mockImage,
+      200,
+      0,
+      400,
+      400,
+      0,
+      0,
+      320,
+      320,
+    );
+  });
+
+  it('rejects if toDataURL fails', async () => {
     mockImage.width = 100;
     mockImage.height = 100;
-    jest.spyOn(mockCanvas, 'toDataURL').mockReturnValue('');
+    jest.spyOn(mockCanvas, 'toDataURL').mockImplementation(() => {
+      throw new Error('Canvas toDataURL failed');
+    });
 
     setTimeout(() => mockImage.onload?.(new Event('load')), 0);
 
@@ -72,12 +143,10 @@ describe('Test convertImageToWebPBase64 function', () => {
     const promise = convertImageToWebPBase64(file);
 
     jest.runAllTimers();
-    await expect(promise).rejects.toThrow(
-      'WebP conversion not supported or failed.',
-    );
+    await expect(promise).rejects.toThrow('Canvas toDataURL failed');
   });
 
-  it('reject if FileReader error', async () => {
+  it('rejects if FileReader error', async () => {
     (mockFileReader.readAsDataURL as jest.Mock).mockImplementation(function (
       this: FileReader,
     ) {
@@ -88,7 +157,7 @@ describe('Test convertImageToWebPBase64 function', () => {
     await expect(convertImageToWebPBase64(file)).rejects.toBeInstanceOf(Event);
   });
 
-  it('reject if no image', async () => {
+  it('rejects if image load fails', async () => {
     setTimeout(() => mockImage.onerror?.(new Event('error')), 0);
 
     const file = new File(['dummy'], 'test.png', { type: 'image/png' });

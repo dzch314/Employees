@@ -1,28 +1,36 @@
-export const convertImageToWebPBase64 = (image?: File) =>
+export const convertImageToWebPBase64 = (image?: File, maxTargetSize = 320) =>
   new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = (event) => {
       const img = new Image();
       img.onload = () => {
+        const side = Math.min(img.width, img.height);
+        let sx = 0;
+        let sy = 0;
+        if (img.width > img.height) {
+          sx = (img.width - side) / 2;
+        } else if (img.height > img.width) {
+          sy = (img.height - side) / 2;
+        }
+        const targetSize = side > maxTargetSize ? maxTargetSize : side;
         const canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
+        canvas.width = targetSize;
+        canvas.height = targetSize;
         const ctx = canvas.getContext('2d');
-        ctx?.drawImage(img, 0, 0);
-
+        if (!ctx) {
+          reject(new Error('Canvas context is not available.'));
+          return;
+        }
+        ctx.drawImage(img, sx, sy, side, side, 0, 0, targetSize, targetSize);
         try {
-          if (canvas.toDataURL('image/webp')) {
-            const webpDataUrl = canvas.toDataURL('image/webp', 0.8); // 0.8 for 80% quality
-            resolve(webpDataUrl);
-          } else {
-            reject(new Error('WebP conversion not supported or failed.'));
-          }
+          const webpDataUrl = canvas.toDataURL('image/webp', 0.8); // 80% качество
+          resolve(webpDataUrl);
         } catch (error) {
           reject(error);
         }
       };
       img.onerror = (error) => reject(error);
-      img.src = event?.target?.result as string; // Load the original image data
+      img.src = event?.target?.result as string; // Загружаем оригинальное изображение
     };
     reader.onerror = (error) => reject(error);
     if (image) {

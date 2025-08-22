@@ -18,5 +18,4 @@ export const employeesListSlice = createSlice({
   },
 });
 
-export const { actions: employeesListActions, reducer: employeesListReducer } =
-  employeesListSlice;
+export const { actions: employeesListActions, reducer: employeesListReducer } = employeesListSlice;

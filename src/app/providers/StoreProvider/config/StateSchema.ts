@@ -1,9 +1,4 @@
-import type {
-  EnhancedStore,
-  UnknownAction,
-  Reducer,
-  ReducersMapObject,
-} from '@reduxjs/toolkit';
+import type { EnhancedStore, UnknownAction, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 
 import type { EmployeesListSchema } from '@/widgets/EmployeesList';
 import type { FilterEmployeesSchema } from '@/features/FilterEmployees';
@@ -25,10 +20,7 @@ export type StateSchemaKey = keyof StateSchema;
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
-  reduce: (
-    state: StateSchema,
-    action: UnknownAction,
-  ) => CombinedState<StateSchema>;
+  reduce: (state: StateSchema, action: UnknownAction) => CombinedState<StateSchema>;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
 }

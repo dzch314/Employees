@@ -19,7 +19,4 @@ export const filterEmployeesSlice = createSlice({
   },
 });
 
-export const {
-  actions: filterEmployeesActions,
-  reducer: filterEmployeesReducer,
-} = filterEmployeesSlice;
+export const { actions: filterEmployeesActions, reducer: filterEmployeesReducer } = filterEmployeesSlice;

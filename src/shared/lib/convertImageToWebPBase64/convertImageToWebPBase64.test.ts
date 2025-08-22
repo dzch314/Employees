@@ -16,20 +16,14 @@ describe('Test convertImageToWebPBase64 function', () => {
         } as unknown as ProgressEvent<FileReader>);
       }),
     };
-    jest
-      .spyOn(window, 'FileReader')
-      .mockImplementation(() => mockFileReader as FileReader);
+    jest.spyOn(window, 'FileReader').mockImplementation(() => mockFileReader as FileReader);
 
     mockImage = {} as unknown as HTMLImageElement;
-    jest
-      .spyOn(window, 'Image')
-      .mockImplementation(() => mockImage as HTMLImageElement);
+    jest.spyOn(window, 'Image').mockImplementation(() => mockImage as HTMLImageElement);
 
     mockCanvas = document.createElement('canvas');
     mockCtx = { drawImage: jest.fn() };
-    jest
-      .spyOn(mockCanvas, 'getContext')
-      .mockReturnValue(mockCtx as CanvasRenderingContext2D);
+    jest.spyOn(mockCanvas, 'getContext').mockReturnValue(mockCtx as CanvasRenderingContext2D);
 
     jest.spyOn(document, 'createElement').mockImplementation((tag: string) => {
       if (tag === 'canvas') return mockCanvas;
@@ -45,9 +39,7 @@ describe('Test convertImageToWebPBase64 function', () => {
   it('converts square image without resize (<= 320)', async () => {
     mockImage.width = 200;
     mockImage.height = 200;
-    jest
-      .spyOn(mockCanvas, 'toDataURL')
-      .mockReturnValue('data:image/webp;base64,webpdata');
+    jest.spyOn(mockCanvas, 'toDataURL').mockReturnValue('data:image/webp;base64,webpdata');
 
     setTimeout(() => mockImage.onload?.(new Event('load')), 0);
 
@@ -58,25 +50,13 @@ describe('Test convertImageToWebPBase64 function', () => {
     const result = await promise;
 
     expect(result).toBe('data:image/webp;base64,webpdata');
-    expect(mockCtx.drawImage).toHaveBeenCalledWith(
-      mockImage,
-      0,
-      0,
-      200,
-      200,
-      0,
-      0,
-      200,
-      200,
-    );
+    expect(mockCtx.drawImage).toHaveBeenCalledWith(mockImage, 0, 0, 200, 200, 0, 0, 200, 200);
   });
 
   it('resizes square image to 320x320 if bigger', async () => {
     mockImage.width = 1000;
     mockImage.height = 1000;
-    jest
-      .spyOn(mockCanvas, 'toDataURL')
-      .mockReturnValue('data:image/webp;base64,webpdata');
+    jest.spyOn(mockCanvas, 'toDataURL').mockReturnValue('data:image/webp;base64,webpdata');
 
     setTimeout(() => mockImage.onload?.(new Event('load')), 0);
 
@@ -87,25 +67,13 @@ describe('Test convertImageToWebPBase64 function', () => {
     const result = await promise;
 
     expect(result).toBe('data:image/webp;base64,webpdata');
-    expect(mockCtx.drawImage).toHaveBeenCalledWith(
-      mockImage,
-      0,
-      0,
-      1000,
-      1000,
-      0,
-      0,
-      320,
-      320,
-    );
+    expect(mockCtx.drawImage).toHaveBeenCalledWith(mockImage, 0, 0, 1000, 1000, 0, 0, 320, 320);
   });
 
   it('crops horizontal image', async () => {
     mockImage.width = 800;
     mockImage.height = 400;
-    jest
-      .spyOn(mockCanvas, 'toDataURL')
-      .mockReturnValue('data:image/webp;base64,webpdata');
+    jest.spyOn(mockCanvas, 'toDataURL').mockReturnValue('data:image/webp;base64,webpdata');
 
     setTimeout(() => mockImage.onload?.(new Event('load')), 0);
 
@@ -117,17 +85,7 @@ describe('Test convertImageToWebPBase64 function', () => {
 
     expect(result).toBe('data:image/webp;base64,webpdata');
     // side = 400, sx = (800-400)/2 = 200
-    expect(mockCtx.drawImage).toHaveBeenCalledWith(
-      mockImage,
-      200,
-      0,
-      400,
-      400,
-      0,
-      0,
-      320,
-      320,
-    );
+    expect(mockCtx.drawImage).toHaveBeenCalledWith(mockImage, 200, 0, 400, 400, 0, 0, 320, 320);
   });
 
   it('rejects if toDataURL fails', async () => {
@@ -147,9 +105,7 @@ describe('Test convertImageToWebPBase64 function', () => {
   });
 
   it('rejects if FileReader error', async () => {
-    (mockFileReader.readAsDataURL as jest.Mock).mockImplementation(function (
-      this: FileReader,
-    ) {
+    (mockFileReader.readAsDataURL as jest.Mock).mockImplementation(function (this: FileReader) {
       this.onerror?.(new Event('error') as any);
     });
 

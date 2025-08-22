@@ -1,8 +1,4 @@
-import {
-  configureStore,
-  type ReducersMapObject,
-  type Reducer,
-} from '@reduxjs/toolkit';
+import { configureStore, type ReducersMapObject, type Reducer } from '@reduxjs/toolkit';
 
 import { userReducer } from '@/entities/User';
 import { rtkApi } from '@/shared/api/rtkApi';
@@ -10,10 +6,7 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { createReducerManager } from './reducerManager';
 import type { StateSchema, CombinedState } from './StateSchema';
 
-export const createReduxStore = (
-  initialState: StateSchema,
-  asyncReducers: ReducersMapObject<StateSchema>,
-) => {
+export const createReduxStore = (initialState: StateSchema, asyncReducers: ReducersMapObject<StateSchema>) => {
   const rootReducer: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     user: userReducer,

@@ -37,6 +37,7 @@ Run only the frontend:
 - `npm run start` - Run both frontend and backend
 - `npm run build:prod` - Build the app in production mode
 - `npm run build:dev` - Build the app in development mode
+- `npm tun prettier` - Run Prettier
 - `npm run lint:ts` - Lint TypeScript files
 - `npm run lint:ts:fix` - Fix lint errors in TypeScript files
 - `npm run lint:scss` - Lint SCSS files

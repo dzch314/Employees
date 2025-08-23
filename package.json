@@ -1,7 +1,7 @@
 {
   "name": "employees",
   "version": "0.0.1",
-  "homepage": "dzch314.online",
+  "homepage": "https://dzch314.online",
   "description": "Employees status management system for creating employee card, checking and changing employee status.",
   "author": "Dmitry Chernyavsky <dzch314@gmail.com> (https://github.com/dzch314)",
   "license": "ISC",

@@ -4,7 +4,7 @@
   width: 400px;
 }
 
-@media screen and (width <= 680px) {
+@media screen and (width <= var(--screen-size-s)) {
   .CreateUserForm {
     width: unset;
   }

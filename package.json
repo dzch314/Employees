@@ -30,7 +30,7 @@
     "**/*.{ts,tsx}": [
       "npx prettier --write --list-different",
       "eslint",
-      "jest --config ./config/jest/jest.config.ts --bail --findRelatedTests"
+      "jest --config ./config/jest/jest.config.ts --bail --findRelatedTests --passWithNoTests"
     ],
     "**/*.scss": "npx stylelint"
   },

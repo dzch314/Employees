@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import type { FC } from 'react';
 
 import { getUserTokenSelector, userActions } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -7,14 +9,14 @@ import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { Text } from '@/shared/ui/Text/Text';
 
 import cls from './Navbar.module.scss';
-import { type FC } from 'react';
 
 interface NavbarProps {
   className?: string;
+  mainPageLink?: string;
   actions?: FC[];
 }
 
-export const Navbar = ({ className, actions = [] }: NavbarProps) => {
+export const Navbar = ({ className, actions = [], mainPageLink = '/' }: NavbarProps) => {
   const dispatch = useAppDispatch();
 
   const authData = useSelector(getUserTokenSelector);
@@ -25,7 +27,9 @@ export const Navbar = ({ className, actions = [] }: NavbarProps) => {
 
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
-      <Text title='Employees' />
+      <Link to={mainPageLink} className={cls.title}>
+        <Text title='Employees' />
+      </Link>
       <div className={cls.actionsContainer}>
         <div className={cls.actions}>
           {actions?.map((Action, index) => (

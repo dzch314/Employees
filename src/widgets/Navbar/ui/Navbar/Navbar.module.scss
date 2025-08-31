@@ -8,12 +8,16 @@
   justify-content: space-between;
 }
 
+.title {
+  text-decoration: none;
+}
+
 .actionsContainer {
   display: flex;
-  gap: 8px;
+  gap: 16px;
 }
 
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 16px;
 }

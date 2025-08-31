@@ -7,12 +7,14 @@ import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { Text } from '@/shared/ui/Text/Text';
 
 import cls from './Navbar.module.scss';
+import { type FC } from 'react';
 
 interface NavbarProps {
   className?: string;
+  actions?: FC[];
 }
 
-export const Navbar = ({ className }: NavbarProps) => {
+export const Navbar = ({ className, actions = [] }: NavbarProps) => {
   const dispatch = useAppDispatch();
 
   const authData = useSelector(getUserTokenSelector);
@@ -23,16 +25,19 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
-      <Text title="Employees" />
-      {authData && (
-      <Button
-        theme={ButtonTheme.SECONDARY}
-        className={cls.links}
-        onClick={onLogout}
-      >
-        Log Out
-      </Button>
-      )}
+      <Text title='Employees' />
+      <div className={cls.actionsContainer}>
+        <div className={cls.actions}>
+          {actions?.map((Action, index) => (
+            <Action key={index} />
+          ))}
+        </div>
+        {authData && (
+          <Button theme={ButtonTheme.SECONDARY} className={cls.links} onClick={onLogout}>
+            Log Out
+          </Button>
+        )}
+      </div>
     </header>
   );
 };

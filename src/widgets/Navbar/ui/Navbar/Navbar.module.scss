@@ -5,12 +5,15 @@
   display: flex;
   align-items: center;
   padding: 10px 32px;
+  justify-content: space-between;
 }
 
-.mainLink {
-  margin-right: 15px;
+.actionsContainer {
+  display: flex;
+  gap: 8px;
 }
 
-.links {
-  margin-left: auto;
+.actions {
+  display: flex;
+  gap: 8px;
 }

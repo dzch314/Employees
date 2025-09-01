@@ -9,13 +9,13 @@
   justify-content: center;
 }
 
-@media screen and (width < var(--screen-size-l)) {
+@media screen and (width <= 1382px) {
   .content {
     margin-top: 20px;
   }
 }
 
-@media screen and (width <= var(--screen-size-s)) {
+@media screen and (width <= 680px) {
   .actions {
     flex-direction: column;
   }

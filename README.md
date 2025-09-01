@@ -62,6 +62,7 @@ This project follows the [Feature-Sliced Design (FSD)](https://feature-sliced.de
 - [EmployeesList](/src/widgets/EmployeesList)
 - [PageError](/src/widgets/PageError)
 - [PageLoader](/src/widgets/PageLoader)
+- [ThemeSwitcher](/src/widgets/ThemeSwither)
 
 ## Features
 - [AuthByUsername](/src/features/AuthByUsername)

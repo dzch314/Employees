@@ -1,6 +1,4 @@
-import {
-  memo, useEffect, useState,
-} from 'react';
+import { memo, useEffect, useState } from 'react';
 
 import ProfileImage from '@/shared/assets/icons/profile.png';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -14,9 +12,7 @@ interface EmployeeImageProps {
   className?: string;
 }
 
-export const EmployeeImage = memo(({
-  className, img, name,
-}: EmployeeImageProps) => {
+export const EmployeeImage = memo(({ className, img, name }: EmployeeImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -36,11 +32,11 @@ export const EmployeeImage = memo(({
 
   return (
     <div className={classNames(cls.EmployeeImage, {}, [className])}>
-      {
-        isLoading
-          ? <Skeleton width="150px" height="150px" borderRadius="50%" />
-          : <img className={cls.img} src={img || ProfileImage} alt={name} />
-      }
+      {isLoading ? (
+        <Skeleton width='150px' height='150px' borderRadius='50%' />
+      ) : (
+        <img className={cls.img} src={img || ProfileImage} alt={name} />
+      )}
     </div>
   );
 });

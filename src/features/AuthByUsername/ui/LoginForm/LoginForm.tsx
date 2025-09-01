@@ -1,6 +1,5 @@
-import {
-  useCallback, useEffect, useState,
-} from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useAuthByUsername } from '@/features/AuthByUsername/api/authByUsernameApi';
 import { userActions } from '@/entities/User';
@@ -18,6 +17,7 @@ interface LoginFormProps {
 }
 
 export const LoginForm = ({ className }: LoginFormProps) => {
+  const { t } = useTranslation('login');
   const dispatch = useAppDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -53,19 +53,19 @@ export const LoginForm = ({ className }: LoginFormProps) => {
 
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
-      <Text title="Login" />
-      {error && <Text theme={TextTheme.ERROR} text="Incorrect login or password" />}
+      <Text title={t('Login')} />
+      {error && <Text theme={TextTheme.ERROR} text={t('Incorrect login or password')} />}
       <Input
-        label="Username"
+        label={t('Username')}
         className={cls.input}
-        placeholder="Type your username"
+        placeholder={t('Type your username')}
         onChange={onChangeUsername}
         value={username}
       />
       <Input
-        label="Password"
+        label={t('Password')}
         className={cls.input}
-        placeholder="Type your password"
+        placeholder={t('Type your password')}
         onChange={onChangePassword}
         value={password}
       />
@@ -75,7 +75,7 @@ export const LoginForm = ({ className }: LoginFormProps) => {
         onClick={onLoginClick}
         isDisabled={isLoading || !username || !password}
       >
-        Log In
+        {t('Log In')}
       </Button>
     </div>
   );

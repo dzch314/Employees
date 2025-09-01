@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { CreateEmployeeModal } from '@/features/CreateEmployee';
 import AddIcon from '@/shared/assets/icons/add.svg';
@@ -13,6 +14,8 @@ interface EmployeeCreatorProps {
 }
 
 export const EmployeeCreator = ({ className, onSuccess }: EmployeeCreatorProps) => {
+  const { t } = useTranslation('main');
+
   const [isCreateUserModalOpen, setIsCreateUserModalOpen] = useState(false);
 
   const onCloseModal = () => {
@@ -26,15 +29,11 @@ export const EmployeeCreator = ({ className, onSuccess }: EmployeeCreatorProps) 
   return (
     <>
       <Button onClick={onShowModal} className={classNames(cls.EmployeeCreator, {}, [className])} size={ButtonSize.L}>
-        Create
+        {t('Create')}
         <AddIcon />
       </Button>
       {isCreateUserModalOpen && (
-      <CreateEmployeeModal
-        isOpen={isCreateUserModalOpen}
-        onClose={onCloseModal}
-        onSuccess={onSuccess}
-      />
+        <CreateEmployeeModal isOpen={isCreateUserModalOpen} onClose={onCloseModal} onSuccess={onSuccess} />
       )}
     </>
   );

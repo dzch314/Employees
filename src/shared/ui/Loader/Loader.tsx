@@ -7,5 +7,5 @@ interface LoaderProps {
 }
 
 export const Loader = ({ className }: LoaderProps) => (
-  <div data-testid="loader" className={classNames(cls.Loader, {}, [className])} />
+  <div data-testid='loader' className={classNames(cls.Loader, {}, [className])} />
 );

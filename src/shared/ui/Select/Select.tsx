@@ -1,7 +1,4 @@
-import {
-  memo, useEffect, useState, useCallback,
-  type MouseEvent,
-} from 'react';
+import { memo, useEffect, useState, useCallback, type MouseEvent } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import DownIcon from '@/shared/assets/icons/down.svg';
@@ -80,17 +77,13 @@ export const Select = memo(<T extends string>(props: SelectProps<T>) => {
   return (
     <div className={classNames(cls.SelectWrapper, {}, [className])}>
       {label && <p className={cls.label}>{label}</p>}
-      <button
-        type="button"
-        className={classNames(cls.select, {}, [cls[size]])}
-        onClick={onOpen}
-      >
+      <button type='button' className={classNames(cls.select, {}, [cls[size]])} onClick={onOpen}>
         {selectedOption?.content || selectedOption?.value || <p className={cls.placeholder}>{placeholder}</p>}
         <div className={cls.selectActions}>
           <CrossIcon
             className={classNames(cls.clearIcon, { [cls.showClearIcon]: !!selectedOption && isClearable }, [])}
             onClick={onClearClick}
-            data-testid="cross-icon"
+            data-testid='cross-icon'
           />
           <DownIcon className={classNames(cls.closeIcon, { [cls.openIcon]: isOpen }, [])} />
         </div>

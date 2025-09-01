@@ -16,10 +16,8 @@ interface TextProps {
   theme?: TextTheme;
 }
 
-export const Text = memo(({
-  className, title, text, theme = TextTheme.PRIMARY,
-}: TextProps) => (
-  <div data-testid="text" className={classNames(cls.Text, {}, [className, cls[theme]])}>
+export const Text = memo(({ className, title, text, theme = TextTheme.PRIMARY }: TextProps) => (
+  <div data-testid='text' className={classNames(cls.Text, {}, [className, cls[theme]])}>
     {title && <p className={cls.title}>{title}</p>}
     {text && <p className={cls.text}>{text}</p>}
   </div>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { StatusSelect, type Status } from '@/entities/Status';
@@ -28,21 +29,20 @@ const reducers: ReducersList = {
 };
 
 export const FilterEmployees = ({ className }: FilterEmployeesProps) => {
+  const { t } = useTranslation('main');
   const dispatch = useAppDispatch();
   const searchText = useSelector(getFilterEmployeesSearchText);
   const filter = useSelector(getFilterEmployeesStatus);
 
-  const onChangeSearchText = (value?: string) =>
-    dispatch(filterEmployeesActions.setSearchText(value || ''));
+  const onChangeSearchText = (value?: string) => dispatch(filterEmployeesActions.setSearchText(value || ''));
 
-  const onChangeFilter = (value: Status) =>
-    dispatch(filterEmployeesActions.setFilter(value));
+  const onChangeFilter = (value: Status) => dispatch(filterEmployeesActions.setFilter(value));
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={classNames(cls.EmployeesFilter, {}, [className])}>
         <Input
-          placeholder='Type to search'
+          placeholder={t('Type to search')}
           Icon={<SearchIcon />}
           value={searchText}
           onChange={onChangeSearchText}
@@ -51,7 +51,7 @@ export const FilterEmployees = ({ className }: FilterEmployeesProps) => {
         <VerticalDivider />
         <StatusSelect
           isClearable
-          placeholder='Filter by status'
+          placeholder={t('Filter by status')}
           value={filter}
           onChange={onChangeFilter}
           className={cls.statusFilter}

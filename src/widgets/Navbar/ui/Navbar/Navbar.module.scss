@@ -21,3 +21,9 @@
   display: flex;
   gap: 16px;
 }
+
+@media screen and (width <= 680px) {
+  .logout {
+    padding: 4px 8px;
+  }
+}

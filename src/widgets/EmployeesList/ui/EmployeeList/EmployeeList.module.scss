@@ -6,19 +6,19 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-@media screen and (width < 1383px) {
+@media screen and (width < var(--screen-size-l)) {
   .EmployeeList {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (width < 932px) {
+@media screen and (width < var(--screen-size-m)) {
   .EmployeeList {
     grid-template-columns: 1fr;
   }
 }
 
-@media screen and (width <= 680px) {
+@media screen and (width <= var(--screen-size-s)) {
   .employeeStatus {
     width: 100%;
 

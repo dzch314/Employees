@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import type { FC } from 'react';
 
 import { getUserTokenSelector, userActions } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -10,9 +12,11 @@ import cls from './Navbar.module.scss';
 
 interface NavbarProps {
   className?: string;
+  mainPageLink?: string;
+  actions?: FC[];
 }
 
-export const Navbar = ({ className }: NavbarProps) => {
+export const Navbar = ({ className, actions = [], mainPageLink = '/' }: NavbarProps) => {
   const dispatch = useAppDispatch();
 
   const authData = useSelector(getUserTokenSelector);
@@ -23,16 +27,21 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
-      <Text title="Employees" />
-      {authData && (
-      <Button
-        theme={ButtonTheme.SECONDARY}
-        className={cls.links}
-        onClick={onLogout}
-      >
-        Log Out
-      </Button>
-      )}
+      <Link to={mainPageLink} className={cls.title}>
+        <Text title='Employees' />
+      </Link>
+      <div className={cls.actionsContainer}>
+        <div className={cls.actions}>
+          {actions?.map((Action, index) => (
+            <Action key={index} />
+          ))}
+        </div>
+        {authData && (
+          <Button theme={ButtonTheme.SECONDARY} className={cls.links} onClick={onLogout}>
+            Log Out
+          </Button>
+        )}
+      </div>
     </header>
   );
 };

@@ -1,6 +1,8 @@
 import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
+import { ThemeDecorator } from '../../config/storybook/decorators/ThemeDecorator/ThemeDecorator';
+import { Theme } from '../../lib/context/ThemeContext';
 import { Button, ButtonSize, ButtonTheme } from './Button';
 
 const meta = {
@@ -14,6 +16,7 @@ const meta = {
     style: { backgroundColor: { control: 'color' } },
   },
   args: { onClick: fn() },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -26,11 +29,21 @@ export const Primary: Story = {
   },
 };
 
+export const PrimaryDark: Story = {
+  ...Primary,
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
 export const Secondary: Story = {
   args: {
     children: 'Secondary',
     theme: ButtonTheme.SECONDARY,
   },
+};
+
+export const SecondaryDark: Story = {
+  ...Secondary,
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const Common: Story = {
@@ -40,11 +53,21 @@ export const Common: Story = {
   },
 };
 
+export const CommonDark: Story = {
+  ...Common,
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
 export const SizeM: Story = {
   args: {
     children: 'Size M',
     size: ButtonSize.M,
   },
+};
+
+export const SizeMDark: Story = {
+  ...SizeM,
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const SizeL: Story = {
@@ -54,9 +77,19 @@ export const SizeL: Story = {
   },
 };
 
+export const SizeLDark: Story = {
+  ...SizeL,
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
 export const IsDisabled: Story = {
   args: {
     children: 'Disabled',
     isDisabled: true,
   },
+};
+
+export const IsDisabledDark: Story = {
+  ...IsDisabled,
+  decorators: [ThemeDecorator(Theme.DARK)],
 };

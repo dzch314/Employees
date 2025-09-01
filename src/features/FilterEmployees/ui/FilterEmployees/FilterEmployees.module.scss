@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-@media screen and (width <= 680px) {
+@media screen and (width <= var(--screen-size-s)) {
   .EmployeesFilter {
     flex-direction: column;
   }

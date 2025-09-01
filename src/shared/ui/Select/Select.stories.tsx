@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
+import { ThemeDecorator } from '../../config/storybook/decorators/ThemeDecorator/ThemeDecorator';
+import { Theme } from '../../lib/context/ThemeContext';
 import { Select, SelectSize } from './Select';
 
 const meta = {
@@ -11,6 +13,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {},
   args: {},
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 } satisfies Meta<typeof Select>;
 
 export default meta;
@@ -38,12 +41,22 @@ export const Primary: Story = {
   },
 };
 
+export const PrimaryDark: Story = {
+  ...Primary,
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
 export const Small: Story = {
   args: {
     placeholder: 'Small select',
     size: SelectSize.S,
     options,
   },
+};
+
+export const SmallDark: Story = {
+  ...Small,
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const Valued: Story = {
@@ -54,12 +67,22 @@ export const Valued: Story = {
   },
 };
 
+export const ValuedDark: Story = {
+  ...Valued,
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
 export const Underlined: Story = {
   args: {
     isUnderlined: true,
     placeholder: 'Underlined select',
     options,
   },
+};
+
+export const UnderlinedDark: Story = {
+  ...Underlined,
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const Labeled: Story = {
@@ -70,6 +93,11 @@ export const Labeled: Story = {
   },
 };
 
+export const LabeledDark: Story = {
+  ...Labeled,
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
 export const Clearable: Story = {
   args: {
     placeholder: 'Clearable select',
@@ -77,6 +105,11 @@ export const Clearable: Story = {
     value: '2',
     isClearable: true,
   },
+};
+
+export const ClearableDark: Story = {
+  ...Clearable,
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const Full: Story = {
@@ -89,4 +122,9 @@ export const Full: Story = {
     placeholder: 'Select value',
     label: 'Full',
   },
+};
+
+export const FullDark: Story = {
+  ...Full,
+  decorators: [ThemeDecorator(Theme.DARK)],
 };

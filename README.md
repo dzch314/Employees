@@ -1,4 +1,5 @@
 # Employees status mgmt system
+(This repository provides an implementation of a small technical assignment. For more information, check the [Terms of Reference](ToR.pdf))
 ## Live Demo
 Already deployed at [dzch314.online](https://dzch314.online/)
 

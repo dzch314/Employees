@@ -2,6 +2,7 @@ import { Suspense, useEffect, useMemo, type FC } from 'react';
 
 import { AppRouter } from '@/app/providers/router';
 import { Navbar } from '@/widgets/Navbar';
+import { LangSwitcher } from '@/widgets/LangSwitcher';
 import { ThemeSwitcher } from '@/widgets/ThemeSwither';
 import { userActions } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -15,7 +16,7 @@ export const App = () => {
     dispatch(userActions.initAuthData());
   }, [dispatch]);
 
-  const actions: FC[] = useMemo(() => [ThemeSwitcher], []);
+  const actions: FC[] = useMemo(() => [LangSwitcher, ThemeSwitcher], []);
 
   return (
     <div className={classNames('app', {}, [])}>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { StatusSelect, type Status } from '@/entities/Status';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -17,6 +18,7 @@ export interface CreateEmployeeProps {
 }
 
 const CreateEmployeeForm = ({ className, onSuccess, onCancel }: CreateEmployeeProps) => {
+  const { t } = useTranslation('newUser');
   const [name, setName] = useState('');
   const [status, setStatus] = useState<Status>();
   const [img, setImage] = useState('');
@@ -40,13 +42,13 @@ const CreateEmployeeForm = ({ className, onSuccess, onCancel }: CreateEmployeePr
 
   return (
     <div className={classNames(cls.CreateUserForm, {}, [className])}>
-      <Text className={cls.formHeader} text="Create new user" />
-      {error && <Text theme={TextTheme.ERROR} text="Something went wrong" />}
+      <Text className={cls.formHeader} text={t('Create new user')} />
+      {error && <Text theme={TextTheme.ERROR} text={t('Something went wrong')} />}
       <hr className={cls.divider} />
       <Input
         className={cls.input}
-        placeholder="Type user name"
-        label="User name*:"
+        placeholder={t('Type user name')}
+        label={t('User name*')}
         isUnderlined
         onChange={onChangeName}
         value={name}
@@ -54,32 +56,26 @@ const CreateEmployeeForm = ({ className, onSuccess, onCancel }: CreateEmployeePr
       />
       <StatusSelect
         className={cls.input}
-        placeholder="Select user status"
-        label="Status*:"
+        placeholder={t('Select user status')}
+        label={t('Status*')}
         isUnderlined
         onChange={setStatus}
         value={status}
       />
       <ImageUpload
         className={cls.input}
-        label="Photo:"
+        label={t('Photo')}
+        placeholder={t('Choose image')}
         isUnderlined
         isClearable
         onChange={onChangeImg}
       />
       <div className={cls.btnContainer}>
-        <Button
-          theme={ButtonTheme.PRIMARY}
-          onClick={onCreateClick}
-          isDisabled={isLoading || !name || !status}
-        >
-          Create
+        <Button theme={ButtonTheme.PRIMARY} onClick={onCreateClick} isDisabled={isLoading || !name || !status}>
+          {t('Create')}
         </Button>
-        <Button
-          theme={ButtonTheme.COMMON}
-          onClick={onCancel}
-        >
-          Cancel
+        <Button theme={ButtonTheme.COMMON} onClick={onCancel}>
+          {t('Cancel')}
         </Button>
       </div>
     </div>

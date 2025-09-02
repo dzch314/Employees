@@ -7,19 +7,17 @@ import { AppRouteProps, routeConfig } from '../config/routeConfig/routeConfig';
 import { AuthRedirect } from '../ui/AuthRedirect';
 
 export const AppRouter = () => {
-  const renderWithWrapper = (
-    {
-      path, authRedirect = false, authOnly = false, element,
-    }: AppRouteProps,
-  ) => (
+  const renderWithWrapper = ({ path, authRedirect = false, authOnly = false, element }: AppRouteProps) => (
     <Route
       key={path}
       path={path}
-      element={(
-        <div className="page-wrapper">
-          <AuthRedirect authRedirect={authRedirect} authOnly={authOnly}>{element}</AuthRedirect>
+      element={
+        <div className='page-wrapper'>
+          <AuthRedirect authRedirect={authRedirect} authOnly={authOnly}>
+            {element}
+          </AuthRedirect>
         </div>
-        )}
+      }
     />
   );
 

@@ -1,6 +1,7 @@
 import { defineConfig } from 'eslint/config';
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import i18next from 'eslint-plugin-i18next';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11Y from 'eslint-plugin-jsx-a11y';
@@ -27,6 +28,7 @@ export default defineConfig([
       compat.extends(
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:i18next/recommended',
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
         'plugin:import/recommended',
@@ -35,6 +37,7 @@ export default defineConfig([
 
     plugins: {
       '@typescript-eslint': fixupPluginRules(typescriptEslint),
+      i18next: fixupPluginRules(i18next),
       react: fixupPluginRules(react),
       'react-hooks': fixupPluginRules(reactHooks),
       'jsx-a11y': fixupPluginRules(jsxA11Y),
@@ -79,6 +82,13 @@ export default defineConfig([
       '@typescript-eslint/no-require-imports': 'warn',
       '@typescript-eslint/no-unused-vars': 'off',
       'func-names': 'warn',
+      'i18next/no-literal-string': [
+        'error',
+        {
+          ignoreAttribute: ['data-testid', 'to'],
+          markupOnly: true,
+        },
+      ],
       'import/default': 'off',
       'import/export': 'off',
       'import/extensions': 'off',
@@ -130,6 +140,7 @@ export default defineConfig([
     files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
 
     rules: {
+      'i18next/no-literal-string': 'off',
       'max-len': 'off',
     },
   },

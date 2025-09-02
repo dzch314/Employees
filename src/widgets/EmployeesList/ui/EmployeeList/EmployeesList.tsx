@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { EmployeeStatus } from '@/features/ChangeEmployeeStatus';
-import {
-  getFilterEmployeesSearchText,
-  getFilterEmployeesStatus,
-} from '@/features/FilterEmployees';
+import { getFilterEmployeesSearchText, getFilterEmployeesStatus } from '@/features/FilterEmployees';
 import { EmployeeItem, EmployeeItemSkeleton } from '@/entities/Employee';
 import {
   DynamicModuleLoader,
@@ -17,10 +15,7 @@ import { Text, TextTheme } from '@/shared/ui/Text';
 
 import { useLazyGetEmployees } from '../../api/employeeListApi/employeesListApi';
 import { getEmployeesList } from '../../model/selectors/getEmployeeList/getEmployeesList';
-import {
-  employeesListActions,
-  employeesListReducer,
-} from '../../model/slice/employeeListSclice/employeesListSlice';
+import { employeesListActions, employeesListReducer } from '../../model/slice/employeeListSclice/employeesListSlice';
 import cls from './EmployeeList.module.scss';
 
 interface EmployeeListProps {
@@ -32,15 +27,12 @@ const reducers: ReducersList = {
   employeesList: employeesListReducer,
 };
 
-const getSkeleton = () =>
-  new Array(6)
-    .fill(0)
-    .map((_item, index) => <EmployeeItemSkeleton key={index} />);
+const getSkeleton = () => new Array(6).fill(0).map((_item, index) => <EmployeeItemSkeleton key={index} />);
 
 export const EmployeesList = ({ className, trigger }: EmployeeListProps) => {
+  const { t } = useTranslation('main');
   const dispatch = useAppDispatch();
-  const [getEmployees, { data: employees, isLoading, error }] =
-    useLazyGetEmployees();
+  const [getEmployees, { data: employees, isLoading, error }] = useLazyGetEmployees();
   const status = useSelector(getFilterEmployeesStatus);
   const searchText = useSelector(getFilterEmployeesSearchText);
 
@@ -58,9 +50,7 @@ export const EmployeesList = ({ className, trigger }: EmployeeListProps) => {
         employeesListActions.setEmployees(
           employees.filter(
             (employee) =>
-              employee.name
-                ?.toLowerCase()
-                .includes(searchText?.toLowerCase() ?? '') &&
+              employee.name?.toLowerCase().includes(searchText?.toLowerCase() ?? '') &&
               (!status || employee.status === status),
           ),
         ),
@@ -88,7 +78,7 @@ export const EmployeesList = ({ className, trigger }: EmployeeListProps) => {
           />
         ))}
         {isLoading && getSkeleton()}
-        {error && <Text text='Something went wrong' theme={TextTheme.ERROR} />}
+        {error && <Text text={t('Something went wrong')} theme={TextTheme.ERROR} />}
       </div>
     </DynamicModuleLoader>
   );

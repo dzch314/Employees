@@ -7,7 +7,16 @@ export const buildBabelLoader = (isDev = true) => ({
       cacheDirectory: true,
       cacheCompression: false,
       presets: ['@babel/preset-env'],
-      plugins: [isDev && require.resolve('react-refresh/babel')].filter(Boolean),
+      plugins: [
+        [
+          'i18next-extract',
+          {
+            locales: ['en', 'he'],
+            keyAsDefaultValue: true,
+          },
+        ],
+        isDev && require.resolve('react-refresh/babel')
+      ].filter(Boolean),
     },
   },
 });

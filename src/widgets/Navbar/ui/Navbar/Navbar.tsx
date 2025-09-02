@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import type { FC } from 'react';
@@ -17,6 +18,8 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ className, actions = [], mainPageLink = '/' }: NavbarProps) => {
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
 
   const authData = useSelector(getUserTokenSelector);
@@ -28,7 +31,7 @@ export const Navbar = ({ className, actions = [], mainPageLink = '/' }: NavbarPr
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
       <Link to={mainPageLink} className={cls.title}>
-        <Text title='Employees' />
+        <Text title={t('Employees')} />
       </Link>
       <div className={cls.actionsContainer}>
         <div className={cls.actions}>
@@ -37,8 +40,8 @@ export const Navbar = ({ className, actions = [], mainPageLink = '/' }: NavbarPr
           ))}
         </div>
         {authData && (
-          <Button theme={ButtonTheme.SECONDARY} className={cls.links} onClick={onLogout}>
-            Log Out
+          <Button theme={ButtonTheme.SECONDARY} className={cls.logout} onClick={onLogout}>
+            {t('Log Out')}
           </Button>
         )}
       </div>

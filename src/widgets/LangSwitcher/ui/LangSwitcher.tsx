@@ -14,7 +14,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    document.body.dir = i18n.language === 'he' ? 'rtl' : 'ltr';
+    document.documentElement.dir = i18n.language === 'he' ? 'rtl' : 'ltr';
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
 

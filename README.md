@@ -73,7 +73,7 @@ This project follows the [🍰 Feature-Sliced Design (FSD)](https://feature-slic
 - [EmployeesList](/src/widgets/EmployeesList)
 - [PageError](/src/widgets/PageError)
 - [PageLoader](/src/widgets/PageLoader)
-- [ThemeSwitcher](/src/widgets/ThemeSwither)
+- [ThemeSwitcher](/src/widgets/ThemeSwitcher)
 - [LangSwitcher](/src/widgets/LangSwitcher)
 
 ## Features
@@ -139,6 +139,8 @@ The current CI pipeline includes:
 - Building the app and Storybook
 - Linting
 - Running tests
+
+----
 
 ## Deployment:
 

@@ -33,6 +33,7 @@ export const Valued: Story = {
     value: 'Valued',
     placeholder: 'Valued input',
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const ValuedDark: Story = {
@@ -45,6 +46,7 @@ export const Underlined: Story = {
     isUnderlined: true,
     placeholder: 'Underlined input',
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const UnderlinedDark: Story = {
@@ -57,6 +59,7 @@ export const Labeled: Story = {
     label: 'Label',
     placeholder: 'Labeled input',
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const LabeledDark: Story = {
@@ -69,6 +72,7 @@ export const WithIcon: Story = {
     Icon: <ExampleIcon />,
     placeholder: 'Input with icon',
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const WithIconDark: Story = {
@@ -83,6 +87,7 @@ export const Full: Story = {
     isUnderlined: true,
     Icon: <ExampleIcon />,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const FullDark: Story = {

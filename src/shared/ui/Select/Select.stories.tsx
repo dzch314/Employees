@@ -39,6 +39,7 @@ export const Primary: Story = {
     placeholder: 'Primary select',
     options,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const PrimaryDark: Story = {
@@ -52,6 +53,7 @@ export const Small: Story = {
     size: SelectSize.S,
     options,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const SmallDark: Story = {
@@ -65,6 +67,7 @@ export const Valued: Story = {
     options,
     value: '1',
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const ValuedDark: Story = {
@@ -78,6 +81,7 @@ export const Underlined: Story = {
     placeholder: 'Underlined select',
     options,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const UnderlinedDark: Story = {
@@ -91,6 +95,7 @@ export const Labeled: Story = {
     placeholder: 'Labeled select',
     options,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const LabeledDark: Story = {
@@ -105,6 +110,7 @@ export const Clearable: Story = {
     value: '2',
     isClearable: true,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const ClearableDark: Story = {
@@ -122,6 +128,7 @@ export const Full: Story = {
     placeholder: 'Select value',
     label: 'Full',
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const FullDark: Story = {

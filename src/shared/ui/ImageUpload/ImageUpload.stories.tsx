@@ -26,6 +26,7 @@ export const Underlined: Story = {
   args: {
     isUnderlined: true,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const UnderlinedDark: Story = {
@@ -37,6 +38,7 @@ export const Labeled: Story = {
   args: {
     label: 'Label',
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const LabeledDark: Story = {
@@ -48,6 +50,7 @@ export const Clearable: Story = {
   args: {
     isClearable: true,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const ClearableDark: Story = {
@@ -62,6 +65,7 @@ export const Full: Story = {
     label: 'Full',
     isUnderlined: true,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const FullDark: Story = {

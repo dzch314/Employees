@@ -6,7 +6,7 @@ export const ThemeDecorator = (theme: Theme) => (StoryComponent: any) => {
 
   return (
     <ThemeProvider initialTheme={theme}>
-      <div className='app' style={{ alignContent: 'space-around' }}>
+      <div className='app' style={{ alignContent: 'space-around', justifyItems: 'center' }}>
         <StoryComponent />
       </div>
     </ThemeProvider>

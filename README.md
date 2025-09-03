@@ -1,4 +1,4 @@
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Roboto&weight=600&size=32&duration=3000&pause=1000&color=38ADF3&background=FFFFFF00&vCenter=true&repeat=false&width=500&height=48&lines=Employees+status+mgmt+system)](https://git.io/typing-svg)
+![Typing SVG](https://readme-typing-svg.demolab.com?font=Roboto&weight=600&size=32&duration=3000&pause=1000&color=38ADF3&background=FFFFFF00&vCenter=true&repeat=false&width=500&height=48&lines=Employees+status+mgmt+system)
 
 (This repository provides an implementation of a small technical assignment. For more information, check the [Terms of Reference](ToR.pdf))
 ## Live Demo

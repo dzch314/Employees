@@ -22,5 +22,8 @@ jobs:
       - name: Lint TS
         run: npm run lint:ts
 
+      - name: Prettier
+        run: npm run prettier
+
       - name: Lint SCSS
         run: npm run lint:scss

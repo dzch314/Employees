@@ -18,7 +18,7 @@ export default {
     [
       '<rootDir>/node_modules/jest-html-reporter',
       {
-        outputPath: '<rootDir>/reports/tests/unit/report.html',
+        outputPath: '<rootDir>/reports/tests/unit/index.html',
         pageTitle: 'Unit tests report',
       },
     ],
